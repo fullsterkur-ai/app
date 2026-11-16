@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-class HomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
 
-  const HomePage({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
