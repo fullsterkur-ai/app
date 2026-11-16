@@ -8,6 +8,7 @@ class Button extends StatefulWidget {
     super.key,
     required this.text,
     this.variant = ButtonVariant.primary,
+    this.width,
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
@@ -19,6 +20,7 @@ class Button extends StatefulWidget {
   final ButtonVariant variant;
   final String text;
 
+  final double? width;
   final VoidCallback? onTap;
   final VoidCallback? onDoubleTap;
   final VoidCallback? onLongPress;
@@ -85,11 +87,18 @@ class _ButtonState extends State<Button> {
                 border: Border.all(color: borderColor),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                child: Text(
-                  widget.text,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+              child: SizedBox(
+                width: widget.width ?? double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12,
+                    horizontal: 8,
+                  ),
+                  child: Text(
+                    widget.text,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
