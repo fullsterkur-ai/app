@@ -1,4 +1,4 @@
-import 'package:app/presentation/screens/home/index.dart';
+import 'package:app/core/navigation/appShellRoute.dart';
 import 'package:app/presentation/screens/components/index.dart';
 import 'package:app/presentation/screens/loading/index.dart';
 import 'package:app/presentation/screens/signin/index.dart';
@@ -6,19 +6,15 @@ import 'package:app/presentation/screens/signup/index.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(
-  routes: <GoRoute>[
+  initialLocation: '/loading',
+  routes: <RouteBase>[
+    GoRoute(path: '/loading', builder: (context, state) => LoadingScreen()),
     GoRoute(
-      path: '/',
-      builder: (context, state) => LoadingScreen(),
-      routes: <GoRoute>[
-        GoRoute(
-          path: 'components',
-          builder: (context, state) => ComponentsScreen(),
-        ),
-        GoRoute(path: 'home', builder: (context, state) => HomeScreen()),
-        GoRoute(path: 'signup', builder: (context, state) => SignupScreen()),
-        GoRoute(path: 'signin', builder: (context, state) => SigninScreen()),
-      ],
+      path: '/components',
+      builder: (context, state) => ComponentsScreen(),
     ),
+    GoRoute(path: '/signup', builder: (context, state) => SignupScreen()),
+    GoRoute(path: '/signin', builder: (context, state) => SigninScreen()),
+    appShellRoute
   ],
 );

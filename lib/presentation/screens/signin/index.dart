@@ -60,7 +60,10 @@ class SigninScreen extends StatelessWidget {
                     Column(
                       spacing: 10,
                       children: [
-                        Button(text: 'Sign in to Fullsterkur.AI'),
+                        Button(
+                          text: 'Sign in to Fullsterkur.AI',
+                          onTap: () => context.go('app'),
+                        ),
                         Row(
                           children: [
                             Expanded(

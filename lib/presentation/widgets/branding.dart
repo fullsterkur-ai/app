@@ -2,6 +2,11 @@ import 'package:app/core/constants/theme/colors.dart';
 import 'package:flutter/widgets.dart';
 
 class AppLogo extends StatelessWidget {
+
+  AppLogo({this.size = 36});
+
+  final double size;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -11,7 +16,7 @@ class AppLogo extends StatelessWidget {
           "FULLSTERKUR",
           style: TextStyle(
             color: AppColor.primary,
-            fontSize: 36,
+            fontSize: this.size,
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -19,7 +24,7 @@ class AppLogo extends StatelessWidget {
           ".AI",
           style: TextStyle(
             color: AppColor.fonts.secondary,
-            fontSize: 36,
+            fontSize: this.size,
             fontWeight: FontWeight.w900,
           ),
         ),
