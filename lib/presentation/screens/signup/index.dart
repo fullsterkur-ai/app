@@ -6,6 +6,7 @@ import 'package:app/presentation/widgets/inputs/emailInput.dart';
 import 'package:app/presentation/widgets/inputs/passwordInput.dart';
 import 'package:app/presentation/widgets/inputs/textInput.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupScreen extends StatelessWidget {
   @override
@@ -25,64 +26,99 @@ class SignupScreen extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                PrimaryHeading(text: 'Create an account'),
-                Text(
-                  'Sign up to get started',
-                  style: TextStyle(color: AppColor.fonts.secondary),
-                ),
-              ],
-            ),
-            Column(
-              spacing: 50,
+              spacing: 40,
               children: [
                 Column(
-                  spacing: 14,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextInput(
-                      inputProperties: InputProperties(
-                        label: 'Username',
-                        placeholder: 'Jane Doe',
-                      ),
-                    ),
-                    EmailInput(
-                      inputProperties: InputProperties(
-                        label: 'Email',
-                        placeholder: 'jane.doe@example.com',
-                      ),
-                    ),
-                    PasswordInput(
-                      inputProperties: InputProperties(
-                        label: 'Password',
-                        placeholder: 'Enter your password',
-                      ),
-                    ),
-                    TextInput(
-                      inputProperties: InputProperties(
-                        label: 'Confirm Password',
-                        placeholder: 'Confirm your password',
-                      ),
+                    PrimaryHeading(text: 'Create an account'),
+                    Text(
+                      'Sign up to get started',
+                      style: TextStyle(color: AppColor.fonts.secondary),
                     ),
                   ],
                 ),
                 Column(
-                  spacing: 10,
+                  spacing: 50,
                   children: [
-                    Button(text: 'Sign up to Fullsterkur.AI'),
-                    Text('or'),
-                    Button(
-                      text: 'Sign up with Google',
-                      variant: ButtonVariant.secondary,
+                    Column(
+                      spacing: 14,
+                      children: [
+                        TextInput(
+                          inputProperties: InputProperties(
+                            label: 'Username',
+                            placeholder: 'Jane Doe',
+                          ),
+                        ),
+                        EmailInput(
+                          inputProperties: InputProperties(
+                            label: 'Email',
+                            placeholder: 'jane.doe@example.com',
+                          ),
+                        ),
+                        PasswordInput(
+                          inputProperties: InputProperties(
+                            label: 'Password',
+                            placeholder: 'Enter your password',
+                          ),
+                        ),
+                        TextInput(
+                          inputProperties: InputProperties(
+                            label: 'Confirm Password',
+                            placeholder: 'Confirm your password',
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      spacing: 10,
+                      children: [
+                        Button(text: 'Sign up to Fullsterkur.AI'),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: AppColor.fonts.secondary,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8),
+                              child: Text('or'),
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: AppColor.fonts.secondary,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Button(
+                          text: 'Sign up with Google',
+                          variant: ButtonVariant.secondary,
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ],
             ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Already have an account? '),
-                Text(' Login ', style: TextStyle(color: AppColor.fonts.info)),
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => context.go('signin'),
+                    child: Text(
+                      ' Login ',
+                      style: TextStyle(color: AppColor.fonts.info),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
