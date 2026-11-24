@@ -1,6 +1,6 @@
-# Mobile
+# App
 
-> Mobile application for Fullsterkur.ai.
+> Frontend applications (mobile & web) for Fullsterkur.ai.
 
 <br />
 <details>
