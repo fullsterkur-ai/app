@@ -8,6 +8,7 @@ class Button extends StatefulWidget {
     super.key,
     required this.text,
     this.variant = ButtonVariant.primary,
+    this.disabled = false,
     this.width,
     this.onTap,
     this.onDoubleTap,
@@ -19,6 +20,7 @@ class Button extends StatefulWidget {
 
   final ButtonVariant variant;
   final String text;
+  final bool disabled;
 
   final double? width;
   final VoidCallback? onTap;
@@ -55,23 +57,28 @@ class _ButtonState extends State<Button> {
     final opacity = _pressed ? 0.7 : (_hovered ? 0.85 : 1.0);
 
     return MouseRegion(
-      cursor: SystemMouseCursors.click,
+      cursor: widget.disabled
+          ? SystemMouseCursors.forbidden
+          : SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: widget.onTap,
+        onTap: !widget.disabled ? widget.onTap : null,
         onDoubleTap: widget.onDoubleTap,
         onLongPress: widget.onLongPress,
         onTapDown: (details) {
+          if (widget.disabled) return;
           setState(() => _pressed = true);
           widget.onTapDown?.call(details);
         },
         onTapUp: (details) {
+          if (widget.disabled) return;
           setState(() => _pressed = false);
           widget.onTapUp?.call(details);
         },
         onTapCancel: () {
+          if (widget.disabled) return;
           setState(() => _pressed = false);
           widget.onTapCancel?.call();
         },
@@ -83,8 +90,14 @@ class _ButtonState extends State<Button> {
             duration: const Duration(milliseconds: 100),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: backgroundColor,
-                border: Border.all(color: borderColor),
+                color: widget.disabled
+                    ? (backgroundColor == AppColor.background
+                          ? AppColor.background
+                          : AppColor.secondary)
+                    : backgroundColor,
+                border: Border.all(
+                  color: widget.disabled ? AppColor.background : borderColor,
+                ),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SizedBox(

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:app/core/ApiResponse.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
@@ -15,7 +16,7 @@ class ApiClient {
     print('Configured API client with base url $baseUrl');
   }
 
-  Future<dynamic> request(
+  Future<ApiResponse> request(
     String method,
     String path, {
     Map<String, dynamic>? body,
@@ -34,30 +35,28 @@ class ApiClient {
       ..body = body != null ? json.encode(body) : '';
 
     final streamedResponse = await _client.send(request);
-    final response = await http.Response.fromStream(streamedResponse);
+    final response = await ApiResponse.fromHttpResponse(
+      await http.Response.fromStream(streamedResponse),
+    );
 
-    if (response.statusCode >= 400) {
-      throw Exception('HTTP ${response.statusCode}: ${response.body}');
-    }
-
-    return json.decode(response.body);
+    return response;
   }
 
-  Future<dynamic> get(String path, {Map<String, String>? headers}) =>
+  Future<ApiResponse> get(String path, {Map<String, String>? headers}) =>
       request('GET', path, headers: headers);
 
-  Future<dynamic> post(
+  Future<ApiResponse> post(
     String path, {
     Map<String, dynamic>? body,
     Map<String, String>? headers,
   }) => request('POST', path, body: body, headers: headers);
 
-  Future<dynamic> put(
+  Future<ApiResponse> put(
     String path, {
     Map<String, dynamic>? body,
     Map<String, String>? headers,
   }) => request('PUT', path, body: body, headers: headers);
 
-  Future<dynamic> delete(String path, {Map<String, String>? headers}) =>
+  Future<ApiResponse> delete(String path, {Map<String, String>? headers}) =>
       request('DELETE', path, headers: headers);
 }
