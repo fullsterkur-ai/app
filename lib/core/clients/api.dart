@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/core/ApiResponse.dart';
+import 'package:app/core/clients/secureStorage.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
@@ -29,6 +30,10 @@ class ApiClient {
       'Accept': 'application/json',
       ...?headers,
     };
+
+    final authorizationToken = await SecureStorage.instance.getToken();
+    if (authorizationToken != null)
+      defaultHeaders['Authorization'] = 'Bearer $authorizationToken';
 
     final request = http.Request(method, uri)
       ..headers.addAll(defaultHeaders)
