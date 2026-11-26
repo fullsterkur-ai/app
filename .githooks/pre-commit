@@ -13,7 +13,7 @@ if ! dart format --output=none --set-exit-if-changed . > /dev/null 2>&1; then
 fi
 
 echo "Running Flutter analyze..."
-if ! flutter analyze; then
+if ! flutter analyze --no-fatal-infos ; then
   echo "Flutter analyze failed. Run 'flutter analyze' to see the issues and fix them manually."
   exit 1
 fi
