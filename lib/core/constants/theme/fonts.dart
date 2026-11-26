@@ -1,5 +1,4 @@
 class _Header {
-
   const _Header();
 
   final double primary = 24;
@@ -9,5 +8,5 @@ class _Header {
 
 class AppFont {
   static const double normal = 14;
-  static const header = _Header(); 
+  static const header = _Header();
 }

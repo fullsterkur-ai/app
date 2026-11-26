@@ -1,4 +1,4 @@
-import 'package:app/core/clients/secureStorage.dart';
+import 'package:app/core/clients/secure_storage.dart';
 import 'package:app/core/navigation/appShellRoute.dart';
 import 'package:app/presentation/screens/components/index.dart';
 import 'package:app/presentation/screens/loading/index.dart';

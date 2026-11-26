@@ -1,5 +1,5 @@
 import 'package:app/core/clients/api.dart';
-import 'package:app/core/clients/secureStorage.dart';
+import 'package:app/core/clients/secure_storage.dart';
 
 final client = ApiClient();
 

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cp .githooks/pre-commit .git/hooks/pre-commit
+
+flutter clean
+flutter pub get
+
+echo "Running format check..."
+if ! dart format --output=none --set-exit-if-changed . > /dev/null 2>&1; then
+  echo "Format check failed. Run 'dart format .' to fix automatically."
+  exit 1
+fi
+
+echo "Running Flutter analyze..."
+if ! flutter analyze --no-fatal-infos ; then
+  echo "Flutter analyze failed. Run 'flutter analyze' to see the issues and fix them manually."
+  exit 1
+fi
