@@ -17,12 +17,12 @@ class ApiResponse extends Response {
   }
 
   dynamic json() {
-    return jsonDecode(this.body);
+    return jsonDecode(body);
   }
 
   dynamic get apiResponseBody {
     final body = json();
-    if (this.success) return body['body'];
+    if (success) return body['body'];
     return null;
   }
 
@@ -31,7 +31,7 @@ class ApiResponse extends Response {
       final body = json();
       return body['body'];
     } catch (e) {
-      return this.reasonPhrase;
+      return reasonPhrase;
     }
   }
 }

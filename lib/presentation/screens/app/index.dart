@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
-
   const HomeScreen({super.key});
 
   @override

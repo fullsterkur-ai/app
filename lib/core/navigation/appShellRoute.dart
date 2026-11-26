@@ -18,15 +18,18 @@ final ShellRoute appShellRoute = ShellRoute(
       routes: [
         GoRoute(
           path: 'train', // ← relative, no leading slash
-          pageBuilder: (context, state) => NoTransitionPage(child: TrainingScreen()),
+          pageBuilder: (context, state) =>
+              NoTransitionPage(child: TrainingScreen()),
         ),
         GoRoute(
           path: 'recovery', // ← relative, no leading slash
-          pageBuilder: (context, state) => NoTransitionPage(child: RecoveryScreen()),
+          pageBuilder: (context, state) =>
+              NoTransitionPage(child: RecoveryScreen()),
         ),
         GoRoute(
           path: 'profile', // ← relative, no leading slash
-          pageBuilder: (context, state) => NoTransitionPage(child: ProfileScreen()),
+          pageBuilder: (context, state) =>
+              NoTransitionPage(child: ProfileScreen()),
         ),
       ],
     ),

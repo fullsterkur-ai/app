@@ -4,7 +4,7 @@ class SecureStorage {
   static final SecureStorage instance = SecureStorage._();
   SecureStorage._();
 
-  final _storage = FlutterSecureStorage(
+  final _storage = const FlutterSecureStorage(
     aOptions: AndroidOptions(storageNamespace: 'ai.fullsterkur.app'),
     webOptions: WebOptions(
       dbName: 'ai.fullsterkur.app',

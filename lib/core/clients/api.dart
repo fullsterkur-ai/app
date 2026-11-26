@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:app/core/ApiResponse.dart';
-import 'package:app/core/clients/secureStorage.dart';
+import 'package:app/core/api_response.dart';
+import 'package:app/core/clients/secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {

@@ -47,6 +47,10 @@
    ```
    flutter pub get
    ```
+3. Prepare environment
+   ```
+   dart .githooks/setup.dart
+   ```
 
 ### Running the App
 
