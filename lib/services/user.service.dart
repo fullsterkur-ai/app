@@ -4,11 +4,15 @@ import 'package:app/models/user.dart';
 final client = ApiClient();
 
 Future<(bool, String?)> createAccount(User user, String password) async {
-  final response = await client.post(
-    '/users',
-    body: {'name': user.name, 'email': user.email, 'password': password},
-  );
-  return (response.success, response.error);
+  try {
+    final response = await client.post(
+      '/users',
+      body: {'name': user.name, 'email': user.email, 'password': password},
+    );
+    return (response.success, response.error);
+  } catch (e) {
+    return (false, 'An error occured. Please try again later');
+  }
 }
 
 Future<User> fetchMe() async {
