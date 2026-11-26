@@ -96,7 +96,7 @@ class _ButtonState extends State<Button> {
                           : AppColor.secondary)
                     : backgroundColor,
                 border: Border.all(
-                  color: widget.disabled ? AppColor.background : borderColor,
+                  color: widget.disabled ? AppColor.secondary : borderColor,
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -110,7 +110,12 @@ class _ButtonState extends State<Button> {
                   child: Text(
                     widget.text,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: widget.disabled
+                          ? AppColor.fonts.secondary
+                          : AppColor.fonts.primary,
+                    ),
                   ),
                 ),
               ),

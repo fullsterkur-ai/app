@@ -4,7 +4,7 @@ import 'package:app/presentation/widgets/heading.dart';
 import 'package:app/presentation/widgets/inputs/base.dart';
 import 'package:app/presentation/widgets/inputs/emailInput.dart';
 import 'package:app/presentation/widgets/inputs/passwordInput.dart';
-import 'package:app/utils/strings.dart';
+import 'package:app/utils/notifications.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:app/services/auth.service.dart';
@@ -25,20 +25,12 @@ class _SigninScreenState extends State<SigninScreen> {
     bool success = false;
     String? err;
     (success, err) = await login(email, password);
-    if (!success) {
-      toastification.dismissAll();
-      return toastification.show(
-        context: context,
-        title: Text(capitalizeFirstLetter(err ?? 'An error occured')),
+    if (!success)
+      return showNotification(
+        context,
+        title: err ?? 'An error occured',
         type: ToastificationType.error,
-        style: ToastificationStyle.flat,
-        backgroundColor: AppColor.background,
-        foregroundColor: AppColor.fonts.secondary,
-        borderSide: BorderSide(color: AppColor.secondary),
-        autoCloseDuration: Duration(seconds: 4),
-        alignment: Alignment.bottomCenter,
       );
-    }
     context.go('app');
   }
 
@@ -128,6 +120,7 @@ class _SigninScreenState extends State<SigninScreen> {
                           Button(
                             text: 'Sign in with Google',
                             variant: ButtonVariant.secondary,
+                            disabled: true,
                           ),
                         ],
                       ),

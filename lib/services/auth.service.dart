@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:app/core/clients/api.dart';
 import 'package:app/core/clients/secureStorage.dart';
 
