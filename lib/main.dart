@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   runApp(const App());
 }
@@ -24,7 +25,7 @@ class App extends StatelessWidget {
           style: TextStyle(
             color: AppColor.fonts.primary,
             fontSize: AppFont.normal,
-            fontFamily: 'Rubik'
+            fontFamily: 'Rubik',
           ),
           child: child!,
         ),
