@@ -47,18 +47,22 @@
    ```
    flutter pub get
    ```
+3. Prepare environment
+   ```
+   dart .githooks/setup.dart
+   ```
 
 ### Running the App
 
 ```
-flutter run
+flutter run --dart-define-from-file config.json
 ```
 
 To run on a specific device:
 
 ```
 flutter devices
-flutter run -d [device_id]
+flutter run -d [device_id] --dart-define-from-file config.json
 ```
 
 ---

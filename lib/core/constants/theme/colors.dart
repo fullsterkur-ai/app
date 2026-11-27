@@ -22,4 +22,3 @@ class AppColor {
 
   static const fonts = _FontColor();
 }
-

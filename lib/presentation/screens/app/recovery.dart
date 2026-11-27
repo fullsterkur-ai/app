@@ -5,5 +5,4 @@ class RecoveryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text('recovery');
   }
-
 }

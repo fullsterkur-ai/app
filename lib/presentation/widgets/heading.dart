@@ -17,11 +17,10 @@ class PrimaryHeading extends Heading {
       style: TextStyle(
         color: AppColor.primary,
         fontSize: AppFont.header.primary,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.bold,
       ),
     );
   }
-
 }
 
 class SecondaryHeading extends Heading {
@@ -34,11 +33,10 @@ class SecondaryHeading extends Heading {
       style: TextStyle(
         color: AppColor.fonts.primary,
         fontSize: AppFont.header.secondary,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.bold,
       ),
     );
   }
-
 }
 
 class TertiaryHeading extends Heading {
@@ -51,9 +49,8 @@ class TertiaryHeading extends Heading {
       style: TextStyle(
         color: AppColor.fonts.secondary,
         fontSize: AppFont.header.tertiary,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.bold,
       ),
     );
   }
-
 }

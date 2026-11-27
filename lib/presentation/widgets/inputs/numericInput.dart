@@ -1,5 +1,4 @@
 import 'package:app/core/constants/theme/colors.dart';
-import 'package:app/core/constants/theme/fonts.dart';
 import 'package:app/presentation/widgets/inputs/base.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,7 +12,6 @@ class NumericInput extends StatefulWidget {
 }
 
 class _NumericInputState extends State<NumericInput> {
-  
   _onMinusTap() {
     var controller = widget.inputProperties.controller;
     if (controller != null) {

@@ -2,7 +2,6 @@ import 'package:app/core/constants/theme/colors.dart';
 import 'package:flutter/widgets.dart';
 
 class AppLogo extends StatelessWidget {
-
   AppLogo({this.size = 36});
 
   final double size;
@@ -34,7 +33,6 @@ class AppLogo extends StatelessWidget {
 }
 
 class AppIcon extends StatelessWidget {
-
   const new({super.key, this.height = 64});
 
   final double height;

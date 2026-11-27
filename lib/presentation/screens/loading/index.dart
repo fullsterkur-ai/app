@@ -9,7 +9,6 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-
   // TODO: temporary variables
   bool loggedIn = false;
 
